@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080409">
+  <title>Only For You ♡</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="scene">
+
+    <div class="stars" id="stars"></div>
+
+    <div class="ornament top-left">✦</div>
+    <div class="ornament top-right">✦</div>
+    <div class="ornament bottom-left">❦</div>
+    <div class="ornament bottom-right">❦</div>
+
+    <div class="content">
+
+      <p class="eyebrow">
+        ✧ Nehir'den Fatma'ya ✧
+      </p>
+
+      <h1 class="main-title">Senin İçin</h1>
+
+      <p class="subtitle">
+        beğenmen dileğiyle <3
+      </p>
+
+      <div class="heart-container">
+        <div class="heart-glow"></div>
+        <canvas
+          id="heartCanvas"
+          role="img"
+          aria-label="Atan sayısal anatomik kalp">
+        </canvas>
+      </div>
+
+      <button id="letterButton" class="letter-button">
+        ✉ Mektubum
+      </button>
+
+      <button id="toggleButton" class="pulse-button">
+        Kalbimi Durdur
+      </button>
+
+      <p class="footer">
+        BİRKAÇ SATIR KOD ve BİRAZ SEVGİ İLE
+      </p>
+
+    </div>
+  </main>
+
+  <div class="letter-overlay" id="letterOverlay"
+       aria-hidden="true">
+
+    <div class="letter" role="dialog"
+         aria-modal="true"
+         aria-labelledby="letterTitle">
+
+      <button class="close-letter"
+              id="closeLetter"
+              aria-label="Mektubu kapat">
+        ×
+      </button>
+
+      <div class="letter-symbol">❦</div>
+
+      <h2 id="letterTitle">Sevgili Fatma,</h2>
+
+      <p>
+        Sana güzel bir hediye yapmak istedim. 
+        Aslında bir çiçek olarak başladı sonunda 
+        bir kalp olarak bitti.
+      </p>
+
+      <p>
+        Senin yanında sönük kaldığı için üzgünüm.
+      </p>
+
+      <p>
+        Umarım hoşuna gider.
+      </p>
+
+      <div class="signature">Sevgiler Nehir ♡</div>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+  <script>
+    const letterButton =
+      document.getElementById("letterButton");
+
+    const letterOverlay =
+      document.getElementById("letterOverlay");
+
+    const closeLetter =
+      document.getElementById("closeLetter");
+
+    function openLetter() {
+      letterOverlay.classList.add("visible");
+      letterOverlay.setAttribute("aria-hidden", "false");
+      closeLetter.focus();
+    }
+
+    function hideLetter() {
+      letterOverlay.classList.remove("visible");
+      letterOverlay.setAttribute("aria-hidden", "true");
+      letterButton.focus();
+    }
+
+    letterButton.addEventListener(
+      "click", openLetter
+    );
+
+    closeLetter.addEventListener(
+      "click", hideLetter
+    );
+
+    letterOverlay.addEventListener("click", e => {
+      if (e.target === letterOverlay) {
+        hideLetter();
+      }
+    });
+
+    document.addEventListener("keydown", e => {
+      if (
+        e.key === "Escape" &&
+        letterOverlay.classList.contains("visible")
+      ) {
+        hideLetter();
+      }
+    });
+  </script>
+
+</body>
+</html>
